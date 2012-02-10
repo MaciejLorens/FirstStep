@@ -1,0 +1,620 @@
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111)
+
+
+Started GET "/rails/info/properties" for 127.0.0.1 at 2012-02-01 11:48:32 +0100
+  Processing by Rails::InfoController#properties as HTML
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Rendered inline template (0.7ms)
+Completed 200 OK in 84ms (Views: 1.9ms | ActiveRecord: 0.6ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-01 11:55:30 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 12ms (Views: 10.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-01 16:00:57 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 10ms (Views: 9.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-01 16:01:01 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 9ms (Views: 8.2ms | ActiveRecord: 0.0ms)
+  [1m[36mSQL (12.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (166.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36mSQL (122.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+Migrating to CreatePosts (20120201110519)
+  [1m[36mSQL (0.6ms)[0m  [1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120201110519')
+  [1m[36mSQL (0.4ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("posts")[0m
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-01 16:10:05 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 10ms (Views: 8.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2012-02-01 16:10:09 +0100
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.7ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 321ms (Views: 13.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2012-02-01 16:10:21 +0100
+  Processing by PostsController#new as HTML
+Rendered posts/_form.html.erb (228.5ms)
+Rendered posts/new.html.erb within layouts/application (233.7ms)
+Completed 200 OK in 302ms (Views: 240.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2012-02-01 16:10:38 +0100
+  Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7hGu2aciexXw4uph/6kjrJxgrSzCH4urV6EvfLMmJ4E=", "post"=>{"name"=>"name1", "title"=>"title1", "content"=>"content1content1content1"}, "commit"=>"Create Post"}
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (0.7ms)[0m  [1mINSERT INTO "posts" ("name", "title", "content", "created_at", "updated_at") VALUES ('name1', 'title1', 'content1content1content1', '2012-02-01 15:10:38.530152', '2012-02-01 15:10:38.530152')[0m
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 267ms
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2012-02-01 16:10:38 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+Rendered posts/show.html.erb within layouts/application (16.6ms)
+Completed 200 OK in 33ms (Views: 24.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2012-02-01 16:10:45 +0100
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (18.9ms)
+Completed 200 OK in 31ms (Views: 26.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2012-02-01 16:11:28 +0100
+  Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts"
+Rendered posts/index.html.erb within layouts/application (18.9ms)
+Completed 200 OK in 32ms (Views: 25.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2012-02-01 16:13:28 +0100
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (18.1ms)
+Completed 200 OK in 32ms (Views: 27.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2012-02-01 16:13:47 +0100
+  Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts"
+Rendered posts/index.html.erb within layouts/application (19.9ms)
+Completed 200 OK in 33ms (Views: 28.0ms | ActiveRecord: 0.6ms)
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Started GET "/posts.xml" for 127.0.0.1 at 2012-02-01 16:39:20 +0100
+  Processing by PostsController#index as XML
+  [1m[36mPost Load (2.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 209ms (Views: 201.0ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2012-02-01 16:39:39 +0100
+  Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts"
+Rendered posts/index.html.erb within layouts/application (20.0ms)
+Completed 200 OK in 38ms (Views: 29.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts.json" for 127.0.0.1 at 2012-02-01 16:40:04 +0100
+  Processing by PostsController#index as JSON
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 406 Not Acceptable in 9ms
+
+
+Started GET "/posts" for 127.0.0.1 at 2012-02-01 16:44:59 +0100
+  Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts"
+Rendered posts/index.html.erb within layouts/application (22.8ms)
+Completed 200 OK in 37ms (Views: 29.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2012-02-01 18:15:48 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (14.3ms)
+Completed 200 OK in 41ms (Views: 31.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2012-02-01 18:15:54 +0100
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (83.1ms)
+Completed 200 OK in 102ms (Views: 95.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2012-02-01 18:25:53 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (13.6ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+Rendered posts/show.html.erb within layouts/application (91.0ms)
+Completed 200 OK in 168ms (Views: 112.3ms | ActiveRecord: 13.6ms)
+
+
+Started GET "/posts/" for 127.0.0.1 at 2012-02-01 18:26:00 +0100
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (82.7ms)
+Completed 200 OK in 99ms (Views: 89.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2012-02-01 18:26:04 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+Rendered posts/show.html.erb within layouts/application (22.1ms)
+Completed 200 OK in 41ms (Views: 28.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts/1/edit" for 127.0.0.1 at 2012-02-01 18:26:06 +0100
+  Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+Rendered posts/_form.html.erb (125.1ms)
+Rendered posts/edit.html.erb within layouts/application (139.1ms)
+Completed 200 OK in 161ms (Views: 145.5ms | ActiveRecord: 0.3ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 16:23:08 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (10.8ms)
+Completed 200 OK in 68ms (Views: 67.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2012-02-02 16:23:16 +0100
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.8ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (48.8ms)
+Completed 200 OK in 574ms (Views: 129.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2012-02-02 16:23:19 +0100
+  Processing by PostsController#new as HTML
+Rendered posts/_form.html.erb (426.8ms)
+Rendered posts/new.html.erb within layouts/application (473.8ms)
+Completed 200 OK in 576ms (Views: 550.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2012-02-02 16:23:25 +0100
+  Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ww33Vs/LvK2eGAWRlkMXsAshRkGIPr4wSNWXN+7j65I=", "post"=>{"name"=>"aa", "title"=>"aa", "content"=>"aaaaaa"}, "commit"=>"Create Post"}
+Rendered posts/_form.html.erb (22.0ms)
+Rendered posts/new.html.erb within layouts/application (36.9ms)
+Completed 200 OK in 108ms (Views: 48.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2012-02-02 16:23:35 +0100
+  Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ww33Vs/LvK2eGAWRlkMXsAshRkGIPr4wSNWXN+7j65I=", "post"=>{"name"=>"aa", "title"=>"aaaaa", "content"=>"aaaaaa"}, "commit"=>"Create Post"}
+  [1m[35mSQL (1.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (2.6ms)[0m  [1mINSERT INTO "posts" ("name", "title", "content", "created_at", "updated_at") VALUES ('aa', 'aaaaa', 'aaaaaa', '2012-02-02 15:23:35.592336', '2012-02-02 15:23:35.592336')[0m
+Redirected to http://localhost:3000/posts/2
+Completed 302 Found in 451ms
+
+
+Started GET "/posts/2" for 127.0.0.1 at 2012-02-02 16:23:36 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 2 LIMIT 1
+Rendered posts/show.html.erb within layouts/application (42.9ms)
+Completed 200 OK in 100ms (Views: 71.1ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/posts/2/edit" for 127.0.0.1 at 2012-02-02 16:23:38 +0100
+  Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 2 LIMIT 1[0m
+Rendered posts/_form.html.erb (52.5ms)
+Rendered posts/edit.html.erb within layouts/application (64.7ms)
+Completed 200 OK in 138ms (Views: 109.7ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/posts/2" for 127.0.0.1 at 2012-02-02 16:23:41 +0100
+  Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ww33Vs/LvK2eGAWRlkMXsAshRkGIPr4wSNWXN+7j65I=", "post"=>{"name"=>"aa", "title"=>"aaaaac", "content"=>"aaaaaa"}, "commit"=>"Update Post", "id"=>"2"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 2 LIMIT 1
+  [1m[36mAREL (3.9ms)[0m  [1mUPDATE "posts" SET "title" = 'aaaaac', "updated_at" = '2012-02-02 15:23:41.986050' WHERE "posts"."id" = 2[0m
+Redirected to http://localhost:3000/posts/2
+Completed 302 Found in 354ms
+
+
+Started GET "/posts/2" for 127.0.0.1 at 2012-02-02 16:23:42 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 2 LIMIT 1
+Rendered posts/show.html.erb within layouts/application (37.0ms)
+Completed 200 OK in 77ms (Views: 48.8ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2012-02-02 16:23:43 +0100
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (52.3ms)
+Completed 200 OK in 83ms (Views: 66.8ms | ActiveRecord: 0.6ms)
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreatePosts (20120201110519)
+Migrating to CreateComments (20120202163133)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.9ms)[0m  [1mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "commenter" varchar(255), "body" text, "post_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120202163133')
+  [1m[36mSQL (0.5ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("comments")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("posts")
+
+
+Started GET "/posts" for 127.0.0.1 at 2012-02-02 17:50:14 +0100
+  Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts"
+Rendered posts/index.html.erb within layouts/application (40.4ms)
+Completed 200 OK in 205ms (Views: 68.0ms | ActiveRecord: 0.6ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111)
+
+
+Started GET "/posts" for 127.0.0.1 at 2012-02-02 17:51:06 +0100
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (5.8ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (48.4ms)
+Completed 200 OK in 553ms (Views: 61.1ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2012-02-02 17:51:21 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mSQL (0.4ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+Rendered posts/show.html.erb within layouts/application (496.4ms)
+Completed 200 OK in 526ms (Views: 503.8ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/posts/1/comments" for 127.0.0.1 at 2012-02-02 17:51:35 +0100
+
+AbstractController::ActionNotFound (The action 'create' could not be found for CommentsController):
+  
+
+Rendered /home/maciej/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (1.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 17:53:16 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 16ms (Views: 15.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2012-02-02 17:53:19 +0100
+  Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts"
+Rendered posts/index.html.erb within layouts/application (45.1ms)
+Completed 200 OK in 71ms (Views: 54.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2012-02-02 17:53:20 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+Rendered posts/show.html.erb within layouts/application (126.0ms)
+Completed 200 OK in 160ms (Views: 135.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/posts/1/comments" for 127.0.0.1 at 2012-02-02 17:53:24 +0100
+  Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ww33Vs/LvK2eGAWRlkMXsAshRkGIPr4wSNWXN+7j65I=", "comment"=>{"commenter"=>"sdfsd", "body"=>"asdfasdf"}, "commit"=>"Create Comment", "post_id"=>"1"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mAREL (10.5ms)[0m  [1mINSERT INTO "comments" ("commenter", "body", "post_id", "created_at", "updated_at") VALUES ('sdfsd', 'asdfasdf', 1, '2012-02-02 16:53:25.026282', '2012-02-02 16:53:25.026282')[0m
+Redirected to http://localhost:3000/posts.1
+Completed 302 Found in 509ms
+
+
+Started GET "/posts.1" for 127.0.0.1 at 2012-02-02 17:53:25 +0100
+  Processing by PostsController#index as 
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts"
+Completed 406 Not Acceptable in 18ms
+
+
+Started GET "/posts" for 127.0.0.1 at 2012-02-02 17:53:32 +0100
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (56.3ms)
+Completed 200 OK in 96ms (Views: 71.5ms | ActiveRecord: 12.1ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2012-02-02 17:53:37 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+Rendered posts/show.html.erb within layouts/application (146.1ms)
+Completed 200 OK in 193ms (Views: 154.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 18:21:57 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 11ms (Views: 10.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2012-02-02 18:21:59 +0100
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (144.3ms)
+Completed 200 OK in 183ms (Views: 156.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2012-02-02 18:22:02 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mComment Load (0.4ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE ("comments".post_id = 1)[0m
+Rendered posts/show.html.erb within layouts/application (338.7ms)
+Completed 500 Internal Server Error in 398ms
+
+ActionView::Template::Error (undefined local variable or method `commment' for #<#<Class:0xa267140>:0xa235d20>):
+    23:   </p>
+    24:   <p>
+    25:     <b>Comment:</b>
+    26:     <%= commment.body %>
+    27:   </p>
+    28: <% end %>
+    29: 
+  app/views/posts/show.html.erb:26:in `block in _app_views_posts_show_html_erb__30003456_85043230_362463463'
+  app/views/posts/show.html.erb:19:in `_app_views_posts_show_html_erb__30003456_85043230_362463463'
+  app/controllers/posts_controller.rb:18:in `show'
+
+Rendered /home/maciej/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.5ms)
+Rendered /home/maciej/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.4ms)
+Rendered /home/maciej/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (32.6ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2012-02-02 18:22:38 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mComment Load (2.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE ("comments".post_id = 1)[0m
+Rendered posts/show.html.erb within layouts/application (64.9ms)
+Completed 200 OK in 98ms (Views: 69.5ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/posts/1/comments" for 127.0.0.1 at 2012-02-02 18:22:47 +0100
+  Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ww33Vs/LvK2eGAWRlkMXsAshRkGIPr4wSNWXN+7j65I=", "comment"=>{"commenter"=>"sanok", "body"=>"sanok body"}, "commit"=>"Create Comment", "post_id"=>"1"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "comments" ("commenter", "body", "post_id", "created_at", "updated_at") VALUES ('sanok', 'sanok body', 1, '2012-02-02 17:22:47.993895', '2012-02-02 17:22:47.993895')[0m
+Redirected to http://localhost:3000/posts.1
+Completed 302 Found in 246ms
+
+
+Started GET "/posts.1" for 127.0.0.1 at 2012-02-02 18:22:48 +0100
+  Processing by PostsController#index as 
+  [1m[35mPost Load (0.8ms)[0m  SELECT "posts".* FROM "posts"
+Completed 406 Not Acceptable in 16ms
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2012-02-02 18:24:37 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE ("comments".post_id = 1)
+Rendered posts/show.html.erb within layouts/application (96.5ms)
+Completed 200 OK in 134ms (Views: 103.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts/1xml" for 127.0.0.1 at 2012-02-02 18:24:47 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1xml"}
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE ("comments".post_id = 1)
+Rendered posts/show.html.erb within layouts/application (157.5ms)
+Completed 200 OK in 226ms (Views: 170.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts/1.xml" for 127.0.0.1 at 2012-02-02 18:24:50 +0100
+  Processing by PostsController#show as XML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+Completed 200 OK in 317ms (Views: 279.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2012-02-02 18:29:54 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (2.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mComment Load (0.4ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE ("comments".post_id = 1)[0m
+Rendered comments/_comment.html.erb (1.9ms)
+Rendered posts/show.html.erb within layouts/application (74.8ms)
+Completed 200 OK in 105ms (Views: 85.1ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2012-02-02 18:36:01 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mComment Load (0.4ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE ("comments".post_id = 1)[0m
+Rendered comments/_comment.html.erb (35.2ms)
+Rendered comments/_form.html.erb (15.9ms)
+Rendered posts/show.html.erb within layouts/application (98.9ms)
+Completed 200 OK in 126ms (Views: 104.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2012-02-02 18:36:11 +0100
+  Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.7ms)[0m  SELECT "posts".* FROM "posts"
+Rendered posts/index.html.erb within layouts/application (108.9ms)
+Completed 200 OK in 157ms (Views: 125.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts/2" for 127.0.0.1 at 2012-02-02 18:36:13 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 2 LIMIT 1[0m
+  [1m[35mComment Load (4.2ms)[0m  SELECT "comments".* FROM "comments" WHERE ("comments".post_id = 2)
+Rendered collection (0.0ms)
+Rendered comments/_form.html.erb (53.6ms)
+Rendered posts/show.html.erb within layouts/application (106.7ms)
+Completed 200 OK in 160ms (Views: 118.1ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2012-02-02 18:36:23 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mComment Load (0.6ms)[0m  SELECT "comments".* FROM "comments" WHERE ("comments".post_id = 1)
+Rendered comments/_comment.html.erb (35.0ms)
+Rendered comments/_form.html.erb (14.9ms)
+Rendered posts/show.html.erb within layouts/application (262.6ms)
+Completed 200 OK in 317ms (Views: 275.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/posts/2" for 127.0.0.1 at 2012-02-02 18:37:33 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 2 LIMIT 1[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE ("comments".post_id = 2)
+Rendered collection (0.0ms)
+Rendered comments/_form.html.erb (45.9ms)
+Rendered posts/show.html.erb within layouts/application (100.8ms)
+Completed 200 OK in 148ms (Views: 116.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts/2" for 127.0.0.1 at 2012-02-02 18:38:45 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (1.9ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 2 LIMIT 1[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE ("comments".post_id = 2)
+Rendered collection (0.0ms)
+Rendered comments/_form.html.erb (52.2ms)
+Rendered posts/show.html.erb within layouts/application (99.2ms)
+Completed 200 OK in 125ms (Views: 106.6ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/posts/2" for 127.0.0.1 at 2012-02-02 18:48:06 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (2.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 2 LIMIT 1[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE ("comments".post_id = 2)
+Rendered collection (0.0ms)
+Rendered comments/_form.html.erb (40.2ms)
+Rendered posts/show.html.erb within layouts/application (80.5ms)
+Completed 200 OK in 183ms (Views: 87.1ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/posts/2" for 127.0.0.1 at 2012-02-02 18:48:11 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 2 LIMIT 1[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE ("comments".post_id = 2)
+Rendered collection (0.0ms)
+Rendered comments/_form.html.erb (57.9ms)
+Rendered posts/show.html.erb within layouts/application (171.5ms)
+Completed 200 OK in 204ms (Views: 178.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts/" for 127.0.0.1 at 2012-02-02 18:48:14 +0100
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.8ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (27.7ms)
+Completed 200 OK in 56ms (Views: 37.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2012-02-02 18:48:17 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mComment Load (0.4ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE ("comments".post_id = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+Rendered comments/_comment.html.erb (37.8ms)
+Rendered comments/_form.html.erb (9.1ms)
+Rendered posts/show.html.erb within layouts/application (254.1ms)
+Completed 200 OK in 299ms (Views: 272.1ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/posts/1/comments/1" for 127.0.0.1 at 2012-02-02 18:48:25 +0100
+
+AbstractController::ActionNotFound (The action 'destroy' could not be found for CommentsController):
+  
+
+Rendered /home/maciej/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (1.2ms)
+
+
+Started POST "/posts/1/comments/1" for 127.0.0.1 at 2012-02-02 18:49:25 +0100
+  Processing by CommentsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Ww33Vs/LvK2eGAWRlkMXsAshRkGIPr4wSNWXN+7j65I=", "post_id"=>"1", "id"=>"1"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."id" = 1 AND ("comments".post_id = 1) LIMIT 1[0m
+  [1m[35mAREL (0.4ms)[0m  DELETE FROM "comments" WHERE "comments"."id" = 1
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 362ms
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2012-02-02 18:49:25 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE ("comments".post_id = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+Rendered comments/_comment.html.erb (27.2ms)
+Rendered comments/_form.html.erb (8.6ms)
+Rendered posts/show.html.erb within layouts/application (77.5ms)
+Completed 200 OK in 103ms (Views: 84.5ms | ActiveRecord: 1.9ms)
