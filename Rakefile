@@ -3,5 +3,6 @@
 
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
+require 'seed/task'
 
 Blog::Application.load_tasks

@@ -6,6 +6,14 @@ gem 'rails', '3.0.10'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+gem 'roo'
+
+gem 'seed'
+gem 'rspec'
+gem 'rspec-rails'
+
+gem 'ruby-debug-base19', "0.11.24"
+gem 'ruby-debug19', "0.11.6"
 
 # Use unicorn as the web server
 # gem 'unicorn'

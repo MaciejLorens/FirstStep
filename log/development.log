@@ -664,3 +664,1302 @@ Migrating to AddRateToPosts (20120214152716)
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
   [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("comments")[0m
   [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("posts")
+  [1m[36mSQL (10.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreatePosts (20120201110519)
+Migrating to CreateComments (20120202163133)
+Migrating to AddRateToPosts (20120214152716)
+  [1m[35mSQL (4.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (6.2ms)[0m  PRAGMA index_list("comments")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("posts")[0m
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreatePosts (20120201110519)
+Migrating to CreateComments (20120202163133)
+Migrating to AddRateToPosts (20120214152716)
+  [1m[35mSQL (0.5ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (5.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("comments")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("posts")[0m
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-16 23:05:28 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 55ms (Views: 54.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2012-02-16 23:05:38 +0100
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (1.9ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (108.8ms)
+Completed 200 OK in 837ms (Views: 142.6ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2012-02-16 23:05:45 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mSQL (0.7ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mComment Load (0.6ms)[0m  SELECT "comments".* FROM "comments" WHERE ("comments".post_id = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+Rendered comments/_comment.html.erb (26.4ms)
+Rendered comments/_form.html.erb (389.3ms)
+Rendered posts/show.html.erb within layouts/application (915.4ms)
+Completed 200 OK in 990ms (Views: 948.3ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/posts/1/comments" for 127.0.0.1 at 2012-02-16 23:06:09 +0100
+  Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FYHPIlglO6U2nxIP2XrrkXFyM7P9iPhlvN9wBl4uuYA=", "comment"=>{"commenter"=>"ja", "body"=>"body"}, "commit"=>"Create Comment", "post_id"=>"1"}
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mAREL (8.6ms)[0m  [1mINSERT INTO "comments" ("commenter", "body", "post_id", "created_at", "updated_at") VALUES ('ja', 'body', 1, '2012-02-16 22:06:10.078596', '2012-02-16 22:06:10.078596')[0m
+Redirected to http://localhost:3000/posts.1
+Completed 302 Found in 370ms
+
+
+Started GET "/posts.1" for 127.0.0.1 at 2012-02-16 23:06:10 +0100
+  Processing by PostsController#index as 
+  [1m[35mPost Load (1.5ms)[0m  SELECT "posts".* FROM "posts"
+Completed 406 Not Acceptable in 15ms
+
+
+Started POST "/posts/1/comments" for 127.0.0.1 at 2012-02-16 23:06:28 +0100
+  Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FYHPIlglO6U2nxIP2XrrkXFyM7P9iPhlvN9wBl4uuYA=", "comment"=>{"commenter"=>"ja", "body"=>"body"}, "commit"=>"Create Comment", "post_id"=>"1"}
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "comments" ("commenter", "body", "post_id", "created_at", "updated_at") VALUES ('ja', 'body', 1, '2012-02-16 22:06:28.211922', '2012-02-16 22:06:28.211922')
+Redirected to http://localhost:3000/posts.1
+Completed 302 Found in 298ms
+
+
+Started GET "/posts.1" for 127.0.0.1 at 2012-02-16 23:06:28 +0100
+  Processing by PostsController#index as 
+  [1m[36mPost Load (1.2ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 406 Not Acceptable in 18ms
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-16 23:08:05 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 13ms (Views: 12.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-16 23:08:05 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 56ms (Views: 55.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-16 23:08:24 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 14ms (Views: 13.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2012-02-16 23:08:26 +0100
+  Processing by PostsController#index as HTML
+  [1m[35mPost Load (3.6ms)[0m  SELECT "posts".* FROM "posts"
+Rendered posts/index.html.erb within layouts/application (52.9ms)
+Completed 200 OK in 92ms (Views: 63.3ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2012-02-16 23:08:31 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.7ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mComment Load (2.0ms)[0m  SELECT "comments".* FROM "comments" WHERE ("comments".post_id = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+Rendered comments/_comment.html.erb (47.7ms)
+Rendered comments/_form.html.erb (15.9ms)
+Rendered posts/show.html.erb within layouts/application (304.5ms)
+Completed 200 OK in 336ms (Views: 310.1ms | ActiveRecord: 2.7ms)
+
+
+Started POST "/posts/1/comments/4" for 127.0.0.1 at 2012-02-16 23:08:37 +0100
+  Processing by CommentsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"FYHPIlglO6U2nxIP2XrrkXFyM7P9iPhlvN9wBl4uuYA=", "post_id"=>"1", "id"=>"4"}
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."id" = 4 AND ("comments".post_id = 1) LIMIT 1[0m
+  [1m[35mAREL (2.8ms)[0m  DELETE FROM "comments" WHERE "comments"."id" = 4
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 423ms
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2012-02-16 23:08:37 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.7ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE ("comments".post_id = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+Rendered comments/_comment.html.erb (38.1ms)
+Rendered comments/_form.html.erb (30.5ms)
+Rendered posts/show.html.erb within layouts/application (133.6ms)
+Completed 200 OK in 178ms (Views: 146.5ms | ActiveRecord: 4.9ms)
+
+
+Started POST "/posts/1/comments/3" for 127.0.0.1 at 2012-02-16 23:08:39 +0100
+  Processing by CommentsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"FYHPIlglO6U2nxIP2XrrkXFyM7P9iPhlvN9wBl4uuYA=", "post_id"=>"1", "id"=>"3"}
+  [1m[36mPost Load (4.7ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."id" = 3 AND ("comments".post_id = 1) LIMIT 1
+  [1m[36mAREL (0.4ms)[0m  [1mDELETE FROM "comments" WHERE "comments"."id" = 3[0m
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 326ms
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2012-02-16 23:08:40 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (2.8ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mComment Load (0.4ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE ("comments".post_id = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+Rendered comments/_comment.html.erb (139.3ms)
+Rendered comments/_form.html.erb (18.8ms)
+Rendered posts/show.html.erb within layouts/application (218.7ms)
+Completed 200 OK in 256ms (Views: 229.1ms | ActiveRecord: 3.2ms)
+
+
+Started POST "/posts/1/comments/2" for 127.0.0.1 at 2012-02-16 23:08:43 +0100
+  Processing by CommentsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"FYHPIlglO6U2nxIP2XrrkXFyM7P9iPhlvN9wBl4uuYA=", "post_id"=>"1", "id"=>"2"}
+  [1m[36mPost Load (0.8ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mComment Load (2.6ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."id" = 2 AND ("comments".post_id = 1) LIMIT 1
+  [1m[36mAREL (0.4ms)[0m  [1mDELETE FROM "comments" WHERE "comments"."id" = 2[0m
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 245ms
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2012-02-16 23:08:43 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE ("comments".post_id = 1)[0m
+Rendered collection (0.0ms)
+Rendered comments/_form.html.erb (45.4ms)
+Rendered posts/show.html.erb within layouts/application (132.5ms)
+Completed 200 OK in 251ms (Views: 142.5ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/posts/1/comments" for 127.0.0.1 at 2012-02-16 23:08:47 +0100
+  Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FYHPIlglO6U2nxIP2XrrkXFyM7P9iPhlvN9wBl4uuYA=", "comment"=>{"commenter"=>"asdfas", "body"=>"asdfasdf"}, "commit"=>"Create Comment", "post_id"=>"1"}
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "comments" ("commenter", "body", "post_id", "created_at", "updated_at") VALUES ('asdfas', 'asdfasdf', 1, '2012-02-16 22:08:47.904132', '2012-02-16 22:08:47.904132')[0m
+Redirected to http://localhost:3000/posts.1
+Completed 302 Found in 293ms
+
+
+Started GET "/posts.1" for 127.0.0.1 at 2012-02-16 23:08:48 +0100
+  Processing by PostsController#index as 
+  [1m[35mPost Load (1.1ms)[0m  SELECT "posts".* FROM "posts"
+Completed 406 Not Acceptable in 21ms
+
+
+Started GET "/posts" for 127.0.0.1 at 2012-02-16 23:09:18 +0100
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (6.7ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (43.0ms)
+Completed 200 OK in 83ms (Views: 52.0ms | ActiveRecord: 6.7ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2012-02-16 23:09:20 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.7ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mComment Load (0.4ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE ("comments".post_id = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+Rendered comments/_comment.html.erb (33.7ms)
+Rendered comments/_form.html.erb (11.5ms)
+Rendered posts/show.html.erb within layouts/application (112.0ms)
+Completed 200 OK in 208ms (Views: 120.3ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/posts/1/comments" for 127.0.0.1 at 2012-02-16 23:09:24 +0100
+  Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FYHPIlglO6U2nxIP2XrrkXFyM7P9iPhlvN9wBl4uuYA=", "comment"=>{"commenter"=>"sdfas", "body"=>"asdfasdf"}, "commit"=>"Create Comment", "post_id"=>"1"}
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mAREL (3.0ms)[0m  INSERT INTO "comments" ("commenter", "body", "post_id", "created_at", "updated_at") VALUES ('sdfas', 'asdfasdf', 1, '2012-02-16 22:09:25.142254', '2012-02-16 22:09:25.142254')
+Redirected to http://localhost:3000/posts.1
+Completed 302 Found in 302ms
+
+
+Started GET "/posts.1" for 127.0.0.1 at 2012-02-16 23:09:25 +0100
+  Processing by PostsController#index as 
+  [1m[36mPost Load (1.2ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 406 Not Acceptable in 20ms
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2012-02-16 23:09:29 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mComment Load (0.5ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE ("comments".post_id = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+Rendered comments/_comment.html.erb (40.4ms)
+Rendered comments/_form.html.erb (17.4ms)
+Rendered posts/show.html.erb within layouts/application (192.9ms)
+Completed 200 OK in 239ms (Views: 216.4ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-16 23:10:19 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 18ms (Views: 15.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-16 23:10:19 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (43.3ms)
+Completed 200 OK in 86ms (Views: 84.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2012-02-16 23:10:22 +0100
+  Processing by PostsController#index as HTML
+  [1m[35mPost Load (1.2ms)[0m  SELECT "posts".* FROM "posts"
+Rendered posts/index.html.erb within layouts/application (103.0ms)
+Completed 200 OK in 233ms (Views: 112.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2012-02-16 23:10:24 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE ("comments".post_id = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+Rendered comments/_comment.html.erb (47.3ms)
+Rendered comments/_form.html.erb (87.0ms)
+Rendered posts/show.html.erb within layouts/application (247.2ms)
+Completed 200 OK in 315ms (Views: 255.1ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/posts/1/comments/5" for 127.0.0.1 at 2012-02-16 23:10:28 +0100
+  Processing by CommentsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"FYHPIlglO6U2nxIP2XrrkXFyM7P9iPhlvN9wBl4uuYA=", "post_id"=>"1", "id"=>"5"}
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."id" = 5 AND ("comments".post_id = 1) LIMIT 1
+  [1m[36mAREL (3.8ms)[0m  [1mDELETE FROM "comments" WHERE "comments"."id" = 5[0m
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 359ms
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2012-02-16 23:10:29 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.7ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mComment Load (0.4ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE ("comments".post_id = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+Rendered comments/_comment.html.erb (60.9ms)
+Rendered comments/_form.html.erb (23.5ms)
+Rendered posts/show.html.erb within layouts/application (403.3ms)
+Completed 200 OK in 505ms (Views: 426.7ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/posts/1/comments/6" for 127.0.0.1 at 2012-02-16 23:10:32 +0100
+  Processing by CommentsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"FYHPIlglO6U2nxIP2XrrkXFyM7P9iPhlvN9wBl4uuYA=", "post_id"=>"1", "id"=>"6"}
+  [1m[36mPost Load (1.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."id" = 6 AND ("comments".post_id = 1) LIMIT 1
+  [1m[36mAREL (0.4ms)[0m  [1mDELETE FROM "comments" WHERE "comments"."id" = 6[0m
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 312ms
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2012-02-16 23:10:33 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE ("comments".post_id = 1)[0m
+Rendered collection (0.0ms)
+Rendered comments/_form.html.erb (28.9ms)
+Rendered posts/show.html.erb within layouts/application (89.9ms)
+Completed 200 OK in 132ms (Views: 100.2ms | ActiveRecord: 5.7ms)
+
+
+Started POST "/posts/1/comments" for 127.0.0.1 at 2012-02-16 23:10:36 +0100
+  Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FYHPIlglO6U2nxIP2XrrkXFyM7P9iPhlvN9wBl4uuYA=", "comment"=>{"commenter"=>"asdfa", "body"=>"asdfa"}, "commit"=>"Create Comment", "post_id"=>"1"}
+  [1m[35mPost Load (4.1ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mAREL (0.7ms)[0m  [1mINSERT INTO "comments" ("commenter", "body", "post_id", "created_at", "updated_at") VALUES ('asdfa', 'asdfa', 1, '2012-02-16 22:10:36.552022', '2012-02-16 22:10:36.552022')[0m
+Redirected to http://localhost:3000/posts.1
+Completed 302 Found in 338ms
+
+
+Started GET "/posts.1" for 127.0.0.1 at 2012-02-16 23:10:36 +0100
+  Processing by PostsController#index as 
+  [1m[35mPost Load (2.7ms)[0m  SELECT "posts".* FROM "posts"
+Completed 406 Not Acceptable in 17ms
+
+
+Started GET "/comments/_form" for 127.0.0.1 at 2012-02-16 23:13:56 +0100
+
+ActionController::RoutingError (No route matches "/comments/_form"):
+  
+
+Rendered /home/maciej/.rvm/gems/ruby-1.9.2-p290@rails3010/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-16 23:29:46 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (103.4ms)
+Completed 200 OK in 187ms (Views: 170.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-16 23:29:46 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (11.7ms)
+Completed 200 OK in 58ms (Views: 51.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-16 23:29:50 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (15.8ms)
+Completed 200 OK in 49ms (Views: 39.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-16 23:32:24 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 17ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-16 23:32:45 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 23ms (Views: 22.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-16 23:32:46 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (32.1ms)
+Completed 200 OK in 104ms (Views: 103.7ms | ActiveRecord: 0.0ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-17 13:54:18 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (8.7ms)
+Completed 200 OK in 36ms (Views: 34.5ms | ActiveRecord: 0.0ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-17 14:21:25 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (25.7ms)
+Completed 200 OK in 97ms (Views: 89.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-17 14:22:56 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (29.6ms)
+Completed 200 OK in 115ms (Views: 114.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-17 14:22:57 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (24.3ms)
+Completed 200 OK in 75ms (Views: 67.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-17 14:25:19 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (10.9ms)
+Completed 200 OK in 32ms (Views: 31.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-17 14:25:19 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (36.3ms)
+Completed 200 OK in 82ms (Views: 73.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-17 14:30:36 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (34.2ms)
+Completed 200 OK in 70ms (Views: 69.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-17 14:30:38 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (15.1ms)
+Completed 200 OK in 84ms (Views: 77.9ms | ActiveRecord: 0.0ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-17 14:30:54 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 14ms (Views: 13.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2012-02-17 14:31:25 +0100
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (3.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (105.0ms)
+Completed 200 OK in 736ms (Views: 132.5ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-17 14:31:29 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 15ms (Views: 13.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-17 14:31:30 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (9.9ms)
+Completed 200 OK in 24ms (Views: 23.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-17 15:13:57 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (19.4ms)
+Completed 200 OK in 33ms (Views: 31.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-17 15:13:58 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (14.7ms)
+Completed 200 OK in 40ms (Views: 33.6ms | ActiveRecord: 0.0ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-17 15:18:04 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 14ms (Views: 13.1ms | ActiveRecord: 0.0ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-17 15:19:17 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (9.5ms)
+Completed 200 OK in 26ms (Views: 25.1ms | ActiveRecord: 0.0ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-17 15:52:43 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 18ms (Views: 16.9ms | ActiveRecord: 0.0ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-17 15:55:05 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 16ms (Views: 15.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2012-02-17 15:55:10 +0100
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (1.4ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (34.1ms)
+Completed 200 OK in 476ms (Views: 40.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2012-02-17 15:55:15 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mSQL (2.4ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE ("comments".post_id = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+Rendered comments/_comment.html.erb (20.1ms)
+Rendered comments/_form.html.erb (313.4ms)
+Rendered posts/show.html.erb within layouts/application (650.6ms)
+Completed 200 OK in 824ms (Views: 749.2ms | ActiveRecord: 3.4ms)
+
+
+Started POST "/posts/1/comments/7" for 127.0.0.1 at 2012-02-17 15:55:20 +0100
+  Processing by CommentsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Lf0Jaxx94AAR3ZJ5l9wnViQTdnslxGXXEkR/CFwc8Dg=", "post_id"=>"1", "id"=>"7"}
+  [1m[35mPost Load (4.5ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mComment Load (2.6ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."id" = 7 AND ("comments".post_id = 1) LIMIT 1[0m
+  [1m[35mAREL (0.6ms)[0m  DELETE FROM "comments" WHERE "comments"."id" = 7
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 458ms
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2012-02-17 15:55:21 +0100
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.7ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE ("comments".post_id = 1)
+Rendered collection (0.0ms)
+Rendered comments/_form.html.erb (139.8ms)
+Rendered posts/show.html.erb within layouts/application (302.9ms)
+Completed 200 OK in 394ms (Views: 340.1ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/posts/1/comments" for 127.0.0.1 at 2012-02-17 15:56:18 +0100
+  Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Lf0Jaxx94AAR3ZJ5l9wnViQTdnslxGXXEkR/CFwc8Dg=", "comment"=>{"commenter"=>"24123412", "body"=>"asadfasdfazxcvzxcv"}, "commit"=>"Create Comment", "post_id"=>"1"}
+  [1m[36mPost Load (2.5ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mAREL (0.5ms)[0m  INSERT INTO "comments" ("commenter", "body", "post_id", "created_at", "updated_at") VALUES ('24123412', 'asadfasdfazxcvzxcv', 1, '2012-02-17 14:56:19.271340', '2012-02-17 14:56:19.271340')
+Redirected to http://localhost:3000/posts.1
+Completed 302 Found in 258ms
+
+
+Started GET "/posts.1" for 127.0.0.1 at 2012-02-17 15:56:19 +0100
+  Processing by PostsController#index as 
+  [1m[36mPost Load (4.5ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 406 Not Acceptable in 18ms
+  [1m[36mSQL (2.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreatePosts (20120201110519)
+Migrating to CreateComments (20120202163133)
+Migrating to AddRateToPosts (20120214152716)
+Migrating to CreateActions (20120222212801)
+  [1m[35mSQL (0.6ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (1.1ms)[0m  [1mCREATE TABLE "actions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "action" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120222212801')
+  [1m[36mSQL (0.5ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("actions")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("comments")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("posts")[0m
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-22 22:52:04 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 37ms (Views: 35.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2012-02-22 22:52:12 +0100
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (7.4ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (61.7ms)
+Completed 200 OK in 798ms (Views: 122.8ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/actions" for 127.0.0.1 at 2012-02-22 22:52:17 +0100
+
+ActionController::RoutingError (No route matches "/actions"):
+  
+
+Rendered /home/maciej/.rvm/gems/ruby-1.9.2-p290@rails3010/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (15.1ms)
+
+
+Started GET "/action" for 127.0.0.1 at 2012-02-22 22:52:23 +0100
+
+ActionController::RoutingError (No route matches "/action"):
+  
+
+Rendered /home/maciej/.rvm/gems/ruby-1.9.2-p290@rails3010/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.7ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-22 22:57:19 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (13.3ms)
+Completed 200 OK in 35ms (Views: 34.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/actions" for 127.0.0.1 at 2012-02-22 22:57:22 +0100
+  Processing by ActionsController#index as HTML
+  [1m[36mAction Load (0.8ms)[0m  [1mSELECT "actions".* FROM "actions"[0m
+Rendered actions/index.html.erb within layouts/application (7.8ms)
+Completed 200 OK in 572ms (Views: 16.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/actions/new" for 127.0.0.1 at 2012-02-22 22:57:30 +0100
+  Processing by ActionsController#new as HTML
+Rendered actions/_form.html.erb (358.7ms)
+Rendered actions/new.html.erb within layouts/application (379.0ms)
+Completed 200 OK in 407ms (Views: 390.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/actions" for 127.0.0.1 at 2012-02-22 22:57:43 +0100
+  Processing by ActionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bDE2tusXplZhoYzJePM5jxgHpWBHwRs2I+IsnHKQPzI=", "commit"=>"Create Action"}
+  [1m[35mSQL (0.4ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (24.7ms)[0m  [1mINSERT INTO "actions" ("user_id", "action", "created_at", "updated_at") VALUES (NULL, NULL, '2012-02-22 21:57:43.395996', '2012-02-22 21:57:43.395996')[0m
+Redirected to http://localhost:3000/actions/1
+Completed 302 Found in 434ms
+
+
+Started GET "/actions/1" for 127.0.0.1 at 2012-02-22 22:57:43 +0100
+  Processing by ActionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mAction Load (4.2ms)[0m  SELECT "actions".* FROM "actions" WHERE "actions"."id" = 1 LIMIT 1
+Rendered actions/show.html.erb within layouts/application (23.1ms)
+Completed 200 OK in 54ms (Views: 30.7ms | ActiveRecord: 29.3ms)
+
+
+Started GET "/actions" for 127.0.0.1 at 2012-02-22 22:57:49 +0100
+  Processing by ActionsController#index as HTML
+  [1m[36mAction Load (3.6ms)[0m  [1mSELECT "actions".* FROM "actions"[0m
+Rendered actions/index.html.erb within layouts/application (34.0ms)
+Completed 200 OK in 52ms (Views: 42.0ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/actions/1/edit" for 127.0.0.1 at 2012-02-22 22:57:56 +0100
+  Processing by ActionsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mAction Load (0.8ms)[0m  SELECT "actions".* FROM "actions" WHERE "actions"."id" = 1 LIMIT 1
+Rendered actions/_form.html.erb (61.4ms)
+Rendered actions/edit.html.erb within layouts/application (68.8ms)
+Completed 200 OK in 99ms (Views: 81.6ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/actions/1" for 127.0.0.1 at 2012-02-22 22:58:04 +0100
+  Processing by ActionsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bDE2tusXplZhoYzJePM5jxgHpWBHwRs2I+IsnHKQPzI=", "commit"=>"Update Action", "id"=>"1"}
+  [1m[36mAction Load (0.8ms)[0m  [1mSELECT "actions".* FROM "actions" WHERE "actions"."id" = 1 LIMIT 1[0m
+Redirected to http://localhost:3000/actions/1
+Completed 302 Found in 31ms
+
+
+Started GET "/actions/1" for 127.0.0.1 at 2012-02-22 22:58:05 +0100
+  Processing by ActionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mAction Load (0.7ms)[0m  SELECT "actions".* FROM "actions" WHERE "actions"."id" = 1 LIMIT 1
+Rendered actions/show.html.erb within layouts/application (165.0ms)
+Completed 200 OK in 185ms (Views: 173.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/actions" for 127.0.0.1 at 2012-02-22 22:58:10 +0100
+  Processing by ActionsController#index as HTML
+  [1m[36mAction Load (1.1ms)[0m  [1mSELECT "actions".* FROM "actions"[0m
+Rendered actions/index.html.erb within layouts/application (24.4ms)
+Completed 200 OK in 36ms (Views: 30.6ms | ActiveRecord: 1.8ms)
+  [1m[36mSQL (0.9ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreatePosts (20120201110519)
+Migrating to CreateComments (20120202163133)
+Migrating to AddRateToPosts (20120214152716)
+Migrating to CreateActions (20120222215613)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TABLE "actions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "action" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+SQLite3::SQLException: table "actions" already exists: CREATE TABLE "actions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "action" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (1.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreatePosts (20120201110519)
+Migrating to CreateComments (20120202163133)
+Migrating to AddRateToPosts (20120214152716)
+Migrating to CreateActions (20120222215613)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TABLE "actions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "action" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+SQLite3::SQLException: table "actions" already exists: CREATE TABLE "actions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "action" varchar(255), "created_at" datetime, "updated_at" datetime) 
+
+
+Started GET "/actions/new" for 127.0.0.1 at 2012-02-22 23:00:13 +0100
+  Processing by ActionsController#new as HTML
+Rendered actions/_form.html.erb (14.5ms)
+Rendered actions/new.html.erb within layouts/application (24.3ms)
+Completed 200 OK in 43ms (Views: 33.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/actions" for 127.0.0.1 at 2012-02-22 23:00:16 +0100
+  Processing by ActionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bDE2tusXplZhoYzJePM5jxgHpWBHwRs2I+IsnHKQPzI=", "commit"=>"Create Action"}
+  [1m[35mAREL (6.0ms)[0m  INSERT INTO "actions" ("user_id", "action", "created_at", "updated_at") VALUES (NULL, NULL, '2012-02-22 22:00:16.723292', '2012-02-22 22:00:16.723292')
+Redirected to http://localhost:3000/actions/2
+Completed 302 Found in 278ms
+
+
+Started GET "/actions/2" for 127.0.0.1 at 2012-02-22 23:00:16 +0100
+  Processing by ActionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAction Load (1.9ms)[0m  [1mSELECT "actions".* FROM "actions" WHERE "actions"."id" = 2 LIMIT 1[0m
+Rendered actions/show.html.erb within layouts/application (20.9ms)
+Completed 200 OK in 41ms (Views: 30.1ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/actions" for 127.0.0.1 at 2012-02-22 23:00:19 +0100
+  Processing by ActionsController#index as HTML
+  [1m[35mAction Load (1.5ms)[0m  SELECT "actions".* FROM "actions"
+Rendered actions/index.html.erb within layouts/application (135.8ms)
+Completed 200 OK in 152ms (Views: 145.9ms | ActiveRecord: 1.5ms)
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.5ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("actions")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("comments")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("posts")
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.5ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("actions")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("comments")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("posts")
+  [1m[36mSQL (1.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.5ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("actions")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("comments")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("posts")
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreatePosts (20120201110519)
+Migrating to CreateComments (20120202163133)
+Migrating to AddRateToPosts (20120214152716)
+Migrating to CreateActions (20120222215613)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TABLE "actions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "action" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+SQLite3::SQLException: table "actions" already exists: CREATE TABLE "actions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "action" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (1.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.2ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TABLE "actions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "action" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+SQLite3::SQLException: table "actions" already exists: CREATE TABLE "actions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "action" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (21.7ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.6ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[36mSQL (0.9ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreatePosts (20120201110519)
+Migrating to CreateComments (20120202163133)
+Migrating to AddRateToPosts (20120214152716)
+Migrating to CreateActions (20120222215613)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TABLE "actions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "action" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+SQLite3::SQLException: table "actions" already exists: CREATE TABLE "actions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "action" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.9ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreatePosts (20120201110519)
+Migrating to CreateComments (20120202163133)
+Migrating to AddRateToPosts (20120214152716)
+  [1m[35mSQL (0.5ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("actions")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("comments")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("posts")
+  [1m[36mSQL (0.9ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[36mSQL (1.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreatePosts (20120201110519)
+Migrating to CreateComments (20120202163133)
+Migrating to AddRateToPosts (20120214152716)
+Migrating to CreateOperatingSystems (20120306084906)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (22.5ms)[0m  [1mCREATE TABLE "operating_systems" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120306084906')
+  [1m[36mSQL (0.5ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("actions")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("comments")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("operating_systems")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("posts")
+  [1m[36mOperatingSystem Load (0.7ms)[0m  [1mSELECT "operating_systems".* FROM "operating_systems"[0m
+  [1m[36mSQL (0.9ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mOperatingSystem Load (0.7ms)[0m  SELECT "operating_systems".* FROM "operating_systems" WHERE "operating_systems"."name" = 'Windows' LIMIT 1
+  [1m[36mAREL (0.6ms)[0m  [1mINSERT INTO "operating_systems" ("name", "created_at", "updated_at") VALUES ('Windows', '2012-03-06 08:59:29.753917', '2012-03-06 08:59:29.753917')[0m
+  [1m[35mOperatingSystem Load (0.5ms)[0m  SELECT "operating_systems".* FROM "operating_systems" WHERE "operating_systems"."name" = 'Linux' LIMIT 1
+  [1m[36mAREL (3.4ms)[0m  [1mINSERT INTO "operating_systems" ("name", "created_at", "updated_at") VALUES ('Linux', '2012-03-06 08:59:30.011063', '2012-03-06 08:59:30.011063')[0m
+  [1m[35mOperatingSystem Load (0.4ms)[0m  SELECT "operating_systems".* FROM "operating_systems" WHERE "operating_systems"."name" = 'Mac OS X' LIMIT 1
+  [1m[36mAREL (0.6ms)[0m  [1mINSERT INTO "operating_systems" ("name", "created_at", "updated_at") VALUES ('Mac OS X', '2012-03-06 08:59:30.137742', '2012-03-06 08:59:30.137742')[0m
+  [1m[36mOperatingSystem Load (0.9ms)[0m  [1mSELECT "operating_systems".* FROM "operating_systems"[0m
+  [1m[35mOperatingSystem Load (2.3ms)[0m  SELECT "operating_systems".* FROM "operating_systems" ORDER BY operating_systems.id DESC LIMIT 1
+  [1m[36mOperatingSystem Load (0.9ms)[0m  [1mSELECT "operating_systems".* FROM "operating_systems"[0m
+  [1m[36mSQL (0.9ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreatePosts (20120201110519)
+Migrating to CreateComments (20120202163133)
+Migrating to AddRateToPosts (20120214152716)
+Migrating to CreateOperatingSystems (20120306084906)
+Migrating to CreateUsers (20120306102400)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (28.4ms)[0m  [1mCREATE TABLE "usi_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255), "crypted_password" varchar(255), "password_salt" varchar(255), "persistence_token" varchar(255), "login_count" integer, "status" integer, "role_id" integer, "verifable_id" integer, "verifable_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120306102400')
+  [1m[36mSQL (0.6ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35mSQL (2.6ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("actions")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("comments")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("operating_systems")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("posts")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("usi_users")[0m
+  [1m[36mSQL (0.9ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreatePosts (20120201110519)
+Migrating to CreateComments (20120202163133)
+Migrating to AddRateToPosts (20120214152716)
+Migrating to CreateUsers (20120306093224)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.8ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255), "crypted_password" varchar(255), "password_salt" varchar(255), "persistence_token" varchar(255), "login_count" integer, "status" integer, "role_id" integer, "verifable_id" integer, "verifable_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120306093224')
+  [1m[36mSQL (0.6ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("actions")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("comments")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("operating_systems")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("posts")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("usi_users")
+  [1m[36mSQL (2.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users"
+  [1m[36mAREL (0.8ms)[0m  [1mINSERT INTO "users" ("email", "crypted_password", "password_salt", "persistence_token", "login_count", "status", "role_id", "verifable_id", "verifable_type", "created_at", "updated_at") VALUES ('aa@aa.pl', '12345678', NULL, '12345678', 9, 1, 1, 1, 'type1', '2012-03-06 09:46:02.961687', '2012-03-06 09:46:02.961687')[0m
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[36mSQL (1.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreatePosts (20120201110519)
+Migrating to CreateComments (20120202163133)
+Migrating to AddRateToPosts (20120214152716)
+Migrating to CreateUsers (20120306093224)
+Migrating to CreateEmployees (20120306102002)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (1.5ms)[0m  [1mCREATE TABLE "employees" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "surname" varchar(255), "name" varchar(255), "employee_title_id" integer, "employee_group_id" integer, "employment_id" integer, "academy_unit_id" integer, "college_id" integer, "building_id" integer, "room" varchar(255), "phone_number" varchar(255), "academy_college_id" integer, "www" varchar(255), "comments" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120306102002')
+  [1m[36mSQL (0.7ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("actions")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("comments")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("employees")[0m
+  [1m[35mSQL (0.4ms)[0m  PRAGMA index_list("operating_systems")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("posts")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36mSQL (1.8ms)[0m  [1mPRAGMA index_list("usi_users")[0m
+  [1m[36mSQL (1.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users"
+  [1m[36mAREL (0.5ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = 1[0m
+  [1m[35mAREL (0.5ms)[0m  INSERT INTO "users" ("email", "crypted_password", "password_salt", "persistence_token", "login_count", "status", "role_id", "verifable_id", "verifable_type", "created_at", "updated_at") VALUES ('aa@aa.pl', '12345678', NULL, '12345678', 0, 1, 1, 1, 'type1', '2012-03-06 10:26:19.684102', '2012-03-06 10:26:19.684102')
+  [1m[36mAREL (0.9ms)[0m  [1mINSERT INTO "employees" ("surname", "name", "employee_title_id", "employee_group_id", "employment_id", "academy_unit_id", "college_id", "building_id", "room", "phone_number", "academy_college_id", "www", "comments", "created_at", "updated_at") VALUES ('Jan', 'Kowalski', 1, 1, 1, 1, 1, 1, '12/a', '987 654 321', 1, 'http://www.aaa.pl', 'comment1', '2012-03-06 10:26:19.880675', '2012-03-06 10:26:19.880675')[0m
+  [1m[36mUser Load (1.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mEmployee Load (0.8ms)[0m  SELECT "employees".* FROM "employees"
+  [1m[36mSQL (2.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.7ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.8ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (163.3ms)[0m  CREATE TABLE "actions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "action" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (114.5ms)[0m  CREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "commenter" varchar(255), "body" text, "post_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (154.3ms)[0m  CREATE TABLE "employees" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "surname" varchar(255), "name" varchar(255), "employee_title_id" integer, "employee_group_id" integer, "employment_id" integer, "academy_unit_id" integer, "college_id" integer, "building_id" integer, "room" varchar(255), "phone_number" varchar(255), "academy_college_id" integer, "www" varchar(255), "comments" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (94.9ms)[0m  CREATE TABLE "operating_systems" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (144.2ms)[0m  CREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime, "rate" integer) 
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (110.8ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255), "crypted_password" varchar(255), "password_salt" varchar(255), "persistence_token" varchar(255), "login_count" integer, "status" integer, "role_id" integer, "verifable_id" integer, "verifable_type" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (1.7ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (102.8ms)[0m  CREATE TABLE "usi_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255), "crypted_password" varchar(255), "password_salt" varchar(255), "persistence_token" varchar(255), "login_count" integer, "status" integer, "role_id" integer, "verifable_id" integer, "verifable_type" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (127.8ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (97.1ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (109.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120306102400')[0m
+  [1m[35mSQL (113.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120306102002')
+  [1m[36mSQL (113.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120201110519')[0m
+  [1m[35mSQL (84.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120202163133')
+  [1m[36mSQL (84.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120214152716')[0m
+  [1m[35mSQL (84.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120306093224')
+  [1m[36mSQL (4.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users"
+  [1m[36mAREL (0.6ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = 2[0m
+  [1m[35mAREL (0.5ms)[0m  INSERT INTO "users" ("email", "crypted_password", "password_salt", "persistence_token", "login_count", "status", "role_id", "verifable_id", "verifable_type", "created_at", "updated_at") VALUES ('aa@aa.pl', '12345678', NULL, '12345678', 0, 1, 1, 1, 'type1', '2012-03-06 16:37:41.848178', '2012-03-06 16:37:41.848178')
+  [1m[36mEmployee Load (0.9ms)[0m  [1mSELECT "employees".* FROM "employees"[0m
+  [1m[35mAREL (0.3ms)[0m  DELETE FROM "employees" WHERE "employees"."id" = 1
+  [1m[36mAREL (3.6ms)[0m  [1mINSERT INTO "employees" ("surname", "name", "employee_title_id", "employee_group_id", "employment_id", "academy_unit_id", "college_id", "building_id", "room", "phone_number", "academy_college_id", "www", "comments", "created_at", "updated_at") VALUES ('Jan', 'Kowalski', 1, 1, 1, 1, 1, 1, '12/a', '987 654 321', 1, 'http://www.aaa.pl', 'comment1', '2012-03-06 16:37:42.338917', '2012-03-06 16:37:42.338917')[0m
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+  [1m[36mUser Load (23.1ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (19.1ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (1.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mAREL (170.6ms)[0m  [1mDELETE FROM "users" WHERE 1=1[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users"
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users"[0m
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+  [1m[36mUser Load (1.5ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mSQL (3.9ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (1.8ms)[0m  [1mINSERT INTO "users" ("email", "crypted_password", "password_salt", "persistence_token", "login_count", "status", "role_id", "verifable_id", "verifable_type", "created_at", "updated_at") VALUES ('aa@aa.pl', '12345678', NULL, '12345678', 0, 1, 1, 1, 'type1', '2012-03-07 13:37:35.466835', '2012-03-07 13:37:35.466835')[0m
+  [1m[35mEmployee Load (0.7ms)[0m  SELECT "employees".* FROM "employees"
+  [1m[36mAREL (1.6ms)[0m  [1mDELETE FROM "employees" WHERE "employees"."id" = 2[0m
+  [1m[35mAREL (2.8ms)[0m  INSERT INTO "employees" ("surname", "name", "employee_title_id", "employee_group_id", "employment_id", "academy_unit_id", "college_id", "building_id", "room", "phone_number", "academy_college_id", "www", "comments", "created_at", "updated_at") VALUES ('Jan', 'Kowalski', 1, 1, 1, 1, 1, 1, '12/a', '987 654 321', 1, 'http://www.aaa.pl', 'comment1', '2012-03-07 13:37:36.038493', '2012-03-07 13:37:36.038493')
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mAREL (0.4ms)[0m  DELETE FROM "users" WHERE "users"."id" = 4
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "users" ("email", "crypted_password", "password_salt", "persistence_token", "login_count", "status", "role_id", "verifable_id", "verifable_type", "created_at", "updated_at") VALUES ('aa@aa.pl', '12345678', NULL, '12345678', 0, 1, 1, 1, 'type1', '2012-03-07 13:37:36.404965', '2012-03-07 13:37:36.404965')[0m
+  [1m[35mEmployee Load (9.9ms)[0m  SELECT "employees".* FROM "employees"
+  [1m[36mAREL (0.4ms)[0m  [1mDELETE FROM "employees" WHERE "employees"."id" = 3[0m
+  [1m[35mAREL (0.5ms)[0m  INSERT INTO "employees" ("surname", "name", "employee_title_id", "employee_group_id", "employment_id", "academy_unit_id", "college_id", "building_id", "room", "phone_number", "academy_college_id", "www", "comments", "created_at", "updated_at") VALUES ('Jan', 'Kowalski', 1, 1, 1, 1, 1, 1, '12/a', '987 654 321', 1, 'http://www.aaa.pl', 'comment1', '2012-03-07 13:37:36.811047', '2012-03-07 13:37:36.811047')
+  [1m[35mUser Load (5.1ms)[0m  SELECT "users".* FROM "users"
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users"
+  [1m[36mUser Load (1.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (18.6ms)[0m  INSERT INTO "employees" ("surname", "name", "employee_title_id", "employee_group_id", "employment_id", "academy_unit_id", "college_id", "building_id", "room", "phone_number", "academy_college_id", "www", "comments", "created_at", "updated_at") VALUES ('Adam', 'Ba?ut', 0, 0, 0, 0, 0, 0, '', '', 0, '', '', '2012-03-07 17:14:59.578456', '2012-03-07 17:14:59.578456')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "users" ("email", "crypted_password", "password_salt", "persistence_token", "login_count", "status", "role_id", "verifable_id", "verifable_type", "created_at", "updated_at") VALUES ('abalut@agh.edu.pl', '12345678', NULL, '12345678', 0, 0, 0, 5, '', '2012-03-07 17:15:00.323947', '2012-03-07 17:15:00.323947')[0m
+  [1m[35mAREL (0.7ms)[0m  INSERT INTO "employees" ("surname", "name", "employee_title_id", "employee_group_id", "employment_id", "academy_unit_id", "college_id", "building_id", "room", "phone_number", "academy_college_id", "www", "comments", "created_at", "updated_at") VALUES ('Anna', 'Bara?ska', 0, 0, 0, 0, 0, 0, '', '', 0, '', '', '2012-03-07 17:15:00.471189', '2012-03-07 17:15:00.471189')
+  [1m[36mAREL (0.6ms)[0m  [1mINSERT INTO "users" ("email", "crypted_password", "password_salt", "persistence_token", "login_count", "status", "role_id", "verifable_id", "verifable_type", "created_at", "updated_at") VALUES ('abaran@agh.edu.pl', '12345678', NULL, '12345678', 0, 0, 0, 6, '', '2012-03-07 17:15:00.620567', '2012-03-07 17:15:00.620567')[0m
+  [1m[35mAREL (0.7ms)[0m  INSERT INTO "employees" ("surname", "name", "employee_title_id", "employee_group_id", "employment_id", "academy_unit_id", "college_id", "building_id", "room", "phone_number", "academy_college_id", "www", "comments", "created_at", "updated_at") VALUES ('Antoni', 'Barbacki', 0, 0, 0, 0, 0, 0, '', '', 0, '', '', '2012-03-07 17:15:00.740839', '2012-03-07 17:15:00.740839')
+  [1m[36mAREL (0.7ms)[0m  [1mINSERT INTO "users" ("email", "crypted_password", "password_salt", "persistence_token", "login_count", "status", "role_id", "verifable_id", "verifable_type", "created_at", "updated_at") VALUES ('barbacki@agh.edu.pl', '12345678', NULL, '12345678', 0, 0, 0, 7, '', '2012-03-07 17:15:00.874869', '2012-03-07 17:15:00.874869')[0m
+  [1m[35mAREL (0.7ms)[0m  INSERT INTO "employees" ("surname", "name", "employee_title_id", "employee_group_id", "employment_id", "academy_unit_id", "college_id", "building_id", "room", "phone_number", "academy_college_id", "www", "comments", "created_at", "updated_at") VALUES ('Tomasz', 'Bergier', 0, 0, 0, 0, 0, 0, '', '', 0, '', '', '2012-03-07 17:15:00.997030', '2012-03-07 17:15:00.997030')
+  [1m[36mAREL (0.6ms)[0m  [1mINSERT INTO "users" ("email", "crypted_password", "password_salt", "persistence_token", "login_count", "status", "role_id", "verifable_id", "verifable_type", "created_at", "updated_at") VALUES ('tbergier@agh.edu.pl', '12345678', NULL, '12345678', 0, 0, 0, 8, '', '2012-03-07 17:15:01.116403', '2012-03-07 17:15:01.116403')[0m
+  [1m[35mAREL (4.1ms)[0m  INSERT INTO "employees" ("surname", "name", "employee_title_id", "employee_group_id", "employment_id", "academy_unit_id", "college_id", "building_id", "room", "phone_number", "academy_college_id", "www", "comments", "created_at", "updated_at") VALUES ('Marek', 'Bogacki', 0, 0, 0, 0, 0, 0, '', '', 0, '', '', '2012-03-07 17:15:01.239341', '2012-03-07 17:15:01.239341')
+  [1m[36mAREL (0.6ms)[0m  [1mINSERT INTO "users" ("email", "crypted_password", "password_salt", "persistence_token", "login_count", "status", "role_id", "verifable_id", "verifable_type", "created_at", "updated_at") VALUES ('bogacki@agh.edu.pl', '12345678', NULL, '12345678', 0, 0, 0, 9, '', '2012-03-07 17:15:01.359216', '2012-03-07 17:15:01.359216')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "employees" ("surname", "name", "employee_title_id", "employee_group_id", "employment_id", "academy_unit_id", "college_id", "building_id", "room", "phone_number", "academy_college_id", "www", "comments", "created_at", "updated_at") VALUES ('Pawe?', '?wi?ka?a', 0, 0, 0, 0, 0, 0, '', '', 0, '', '', '2012-03-07 17:15:01.492873', '2012-03-07 17:15:01.492873')
+  [1m[36mAREL (1.2ms)[0m  [1mINSERT INTO "users" ("email", "crypted_password", "password_salt", "persistence_token", "login_count", "status", "role_id", "verifable_id", "verifable_type", "created_at", "updated_at") VALUES ('pawelcwi@agh.edu.pl', '12345678', NULL, '12345678', 0, 0, 0, 10, '', '2012-03-07 17:15:01.615223', '2012-03-07 17:15:01.615223')[0m
+  [1m[35mAREL (3.0ms)[0m  INSERT INTO "employees" ("surname", "name", "employee_title_id", "employee_group_id", "employment_id", "academy_unit_id", "college_id", "building_id", "room", "phone_number", "academy_college_id", "www", "comments", "created_at", "updated_at") VALUES ('Teresa', 'Eckes', 0, 0, 0, 0, 0, 0, '', '', 0, '', '', '2012-03-07 17:15:01.722584', '2012-03-07 17:15:01.722584')
+  [1m[36mAREL (1.1ms)[0m  [1mINSERT INTO "users" ("email", "crypted_password", "password_salt", "persistence_token", "login_count", "status", "role_id", "verifable_id", "verifable_type", "created_at", "updated_at") VALUES ('teckes@agh.edu.pl', '12345678', NULL, '12345678', 0, 0, 0, 11, '', '2012-03-07 17:15:01.842740', '2012-03-07 17:15:01.842740')[0m
+  [1m[35mAREL (0.7ms)[0m  INSERT INTO "employees" ("surname", "name", "employee_title_id", "employee_group_id", "employment_id", "academy_unit_id", "college_id", "building_id", "room", "phone_number", "academy_college_id", "www", "comments", "created_at", "updated_at") VALUES ('Karol', 'Firek', 0, 0, 0, 0, 0, 0, '', '', 0, '', '', '2012-03-07 17:15:01.950398', '2012-03-07 17:15:01.950398')
+  [1m[36mAREL (0.7ms)[0m  [1mINSERT INTO "users" ("email", "crypted_password", "password_salt", "persistence_token", "login_count", "status", "role_id", "verifable_id", "verifable_type", "created_at", "updated_at") VALUES ('kfirek@agh.edu.pl', '12345678', NULL, '12345678', 0, 0, 0, 12, '', '2012-03-07 17:15:02.084503', '2012-03-07 17:15:02.084503')[0m
+  [1m[35mAREL (3.4ms)[0m  INSERT INTO "employees" ("surname", "name", "employee_title_id", "employee_group_id", "employment_id", "academy_unit_id", "college_id", "building_id", "room", "phone_number", "academy_college_id", "www", "comments", "created_at", "updated_at") VALUES ('Natalia', 'Florencka', 0, 0, 0, 0, 0, 0, '', '', 0, '', '', '2012-03-07 17:15:02.206923', '2012-03-07 17:15:02.206923')
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "users" ("email", "crypted_password", "password_salt", "persistence_token", "login_count", "status", "role_id", "verifable_id", "verifable_type", "created_at", "updated_at") VALUES ('floren@agh.edu.pl', '12345678', NULL, '12345678', 0, 0, 0, 13, '', '2012-03-07 17:15:02.339779', '2012-03-07 17:15:02.339779')[0m
+DEPRECATION WARNING: subclasses is deprecated and will be removed from Rails 3.0 (use descendants instead). (called from mon_synchronize at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/monitor.rb:201)
+  [1m[35mAREL (0.5ms)[0m  INSERT INTO "employees" ("surname", "name", "employee_title_id", "employee_group_id", "employment_id", "academy_unit_id", "college_id", "building_id", "room", "phone_number", "academy_college_id", "www", "comments", "created_at", "updated_at") VALUES ('Adam', 'Ba?ut', 0, 0, 0, 0, 0, 0, '', '', 0, '', '', '2012-03-07 17:15:02.585171', '2012-03-07 17:15:02.585171')
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO "users" ("email", "crypted_password", "password_salt", "persistence_token", "login_count", "status", "role_id", "verifable_id", "verifable_type", "created_at", "updated_at") VALUES ('abalut@agh.edu.pl', '12345678', NULL, '12345678', 0, 0, 0, 14, '', '2012-03-07 17:15:02.878547', '2012-03-07 17:15:02.878547')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "employees" ("surname", "name", "employee_title_id", "employee_group_id", "employment_id", "academy_unit_id", "college_id", "building_id", "room", "phone_number", "academy_college_id", "www", "comments", "created_at", "updated_at") VALUES ('Anna', 'Bara?ska', 0, 0, 0, 0, 0, 0, '', '', 0, '', '', '2012-03-07 17:15:03.014705', '2012-03-07 17:15:03.014705')
+  [1m[36mAREL (0.7ms)[0m  [1mINSERT INTO "users" ("email", "crypted_password", "password_salt", "persistence_token", "login_count", "status", "role_id", "verifable_id", "verifable_type", "created_at", "updated_at") VALUES ('abaran@agh.edu.pl', '12345678', NULL, '12345678', 0, 0, 0, 15, '', '2012-03-07 17:15:03.143733', '2012-03-07 17:15:03.143733')[0m
+  [1m[35mAREL (4.7ms)[0m  INSERT INTO "employees" ("surname", "name", "employee_title_id", "employee_group_id", "employment_id", "academy_unit_id", "college_id", "building_id", "room", "phone_number", "academy_college_id", "www", "comments", "created_at", "updated_at") VALUES ('Antoni', 'Barbacki', 0, 0, 0, 0, 0, 0, '', '', 0, '', '', '2012-03-07 17:15:03.259292', '2012-03-07 17:15:03.259292')
+  [1m[36mAREL (0.6ms)[0m  [1mINSERT INTO "users" ("email", "crypted_password", "password_salt", "persistence_token", "login_count", "status", "role_id", "verifable_id", "verifable_type", "created_at", "updated_at") VALUES ('barbacki@agh.edu.pl', '12345678', NULL, '12345678', 0, 0, 0, 16, '', '2012-03-07 17:15:03.385952', '2012-03-07 17:15:03.385952')[0m
+  [1m[35mAREL (1.3ms)[0m  INSERT INTO "employees" ("surname", "name", "employee_title_id", "employee_group_id", "employment_id", "academy_unit_id", "college_id", "building_id", "room", "phone_number", "academy_college_id", "www", "comments", "created_at", "updated_at") VALUES ('Tomasz', 'Bergier', 0, 0, 0, 0, 0, 0, '', '', 0, '', '', '2012-03-07 17:15:03.500287', '2012-03-07 17:15:03.500287')
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "users" ("email", "crypted_password", "password_salt", "persistence_token", "login_count", "status", "role_id", "verifable_id", "verifable_type", "created_at", "updated_at") VALUES ('tbergier@agh.edu.pl', '12345678', NULL, '12345678', 0, 0, 0, 17, '', '2012-03-07 17:15:03.967310', '2012-03-07 17:15:03.967310')[0m
+  [1m[35mAREL (0.7ms)[0m  INSERT INTO "employees" ("surname", "name", "employee_title_id", "employee_group_id", "employment_id", "academy_unit_id", "college_id", "building_id", "room", "phone_number", "academy_college_id", "www", "comments", "created_at", "updated_at") VALUES ('Marek', 'Bogacki', 0, 0, 0, 0, 0, 0, '', '', 0, '', '', '2012-03-07 17:15:04.154452', '2012-03-07 17:15:04.154452')
+  [1m[36mAREL (1.4ms)[0m  [1mINSERT INTO "users" ("email", "crypted_password", "password_salt", "persistence_token", "login_count", "status", "role_id", "verifable_id", "verifable_type", "created_at", "updated_at") VALUES ('bogacki@agh.edu.pl', '12345678', NULL, '12345678', 0, 0, 0, 18, '', '2012-03-07 17:15:04.266702', '2012-03-07 17:15:04.266702')[0m
+  [1m[35mAREL (0.7ms)[0m  INSERT INTO "employees" ("surname", "name", "employee_title_id", "employee_group_id", "employment_id", "academy_unit_id", "college_id", "building_id", "room", "phone_number", "academy_college_id", "www", "comments", "created_at", "updated_at") VALUES ('Pawe?', '?wi?ka?a', 0, 0, 0, 0, 0, 0, '', '', 0, '', '', '2012-03-07 17:15:04.381355', '2012-03-07 17:15:04.381355')
+  [1m[36mAREL (0.6ms)[0m  [1mINSERT INTO "users" ("email", "crypted_password", "password_salt", "persistence_token", "login_count", "status", "role_id", "verifable_id", "verifable_type", "created_at", "updated_at") VALUES ('pawelcwi@agh.edu.pl', '12345678', NULL, '12345678', 0, 0, 0, 19, '', '2012-03-07 17:15:04.494261', '2012-03-07 17:15:04.494261')[0m
+  [1m[35mAREL (0.8ms)[0m  INSERT INTO "employees" ("surname", "name", "employee_title_id", "employee_group_id", "employment_id", "academy_unit_id", "college_id", "building_id", "room", "phone_number", "academy_college_id", "www", "comments", "created_at", "updated_at") VALUES ('Teresa', 'Eckes', 0, 0, 0, 0, 0, 0, '', '', 0, '', '', '2012-03-07 17:15:04.608934', '2012-03-07 17:15:04.608934')
+  [1m[36mAREL (0.8ms)[0m  [1mINSERT INTO "users" ("email", "crypted_password", "password_salt", "persistence_token", "login_count", "status", "role_id", "verifable_id", "verifable_type", "created_at", "updated_at") VALUES ('teckes@agh.edu.pl', '12345678', NULL, '12345678', 0, 0, 0, 20, '', '2012-03-07 17:15:04.735939', '2012-03-07 17:15:04.735939')[0m
+  [1m[35mAREL (0.7ms)[0m  INSERT INTO "employees" ("surname", "name", "employee_title_id", "employee_group_id", "employment_id", "academy_unit_id", "college_id", "building_id", "room", "phone_number", "academy_college_id", "www", "comments", "created_at", "updated_at") VALUES ('Karol', 'Firek', 0, 0, 0, 0, 0, 0, '', '', 0, '', '', '2012-03-07 17:15:04.865006', '2012-03-07 17:15:04.865006')
+  [1m[36mAREL (3.6ms)[0m  [1mINSERT INTO "users" ("email", "crypted_password", "password_salt", "persistence_token", "login_count", "status", "role_id", "verifable_id", "verifable_type", "created_at", "updated_at") VALUES ('kfirek@agh.edu.pl', '12345678', NULL, '12345678', 0, 0, 0, 21, '', '2012-03-07 17:15:04.978732', '2012-03-07 17:15:04.978732')[0m
+  [1m[35mAREL (0.8ms)[0m  INSERT INTO "employees" ("surname", "name", "employee_title_id", "employee_group_id", "employment_id", "academy_unit_id", "college_id", "building_id", "room", "phone_number", "academy_college_id", "www", "comments", "created_at", "updated_at") VALUES ('Natalia', 'Florencka', 0, 0, 0, 0, 0, 0, '', '', 0, '', '', '2012-03-07 17:15:05.106939', '2012-03-07 17:15:05.106939')
+  [1m[36mAREL (0.7ms)[0m  [1mINSERT INTO "users" ("email", "crypted_password", "password_salt", "persistence_token", "login_count", "status", "role_id", "verifable_id", "verifable_type", "created_at", "updated_at") VALUES ('floren@agh.edu.pl', '12345678', NULL, '12345678', 0, 0, 0, 22, '', '2012-03-07 17:15:05.220753', '2012-03-07 17:15:05.220753')[0m
+  [1m[36mUser Load (4.7ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mEmployee Load (0.9ms)[0m  SELECT "employees".* FROM "employees" LIMIT 1
+  [1m[36mSQL (0.9ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mEmployee Load (1.5ms)[0m  SELECT "employees".* FROM "employees" ORDER BY employees.id DESC LIMIT 1
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at /home/maciej/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111)
+
+
+Started GET "/" for 127.0.0.1 at 2012-03-09 20:22:52 +0100
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (20.0ms)
+Completed 200 OK in 80ms (Views: 79.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2012-03-09 20:23:05 +0100
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (110.8ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (179.2ms)
+Completed 200 OK in 830ms (Views: 254.1ms | ActiveRecord: 110.8ms)
+  [1m[36mEmployee Load (32.4ms)[0m  [1mSELECT "employees".* FROM "employees"[0m
+  [1m[35mEmployee Load (4.7ms)[0m  SELECT "employees".* FROM "employees"
+  [1m[36mEmployee Load (6.8ms)[0m  [1mSELECT "employees".* FROM "employees"[0m
+  [1m[35mSQL (0.8ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
